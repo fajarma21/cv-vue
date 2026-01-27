@@ -26,6 +26,6 @@ const { skills } = defineProps(['skills']);
   font-weight: 700;
   color: var(--accent-dark);
   border: 1px solid rgba(0, 160, 130, 0.5);
-  font-size: 13px;
+  font-size: 14px;
 }
 </style>

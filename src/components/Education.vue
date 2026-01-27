@@ -27,12 +27,11 @@ const { list } = defineProps(['list']);
   border: 1px solid #eef6f3;
   h4 {
     margin: 0;
-    font-size: 15px;
   }
 }
 
 .text {
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   margin-top: 6px;
   text-decoration: none;

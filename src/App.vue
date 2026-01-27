@@ -19,7 +19,12 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { collection, getDocs, query } from 'firebase/firestore/lite';
+import {
+  collection,
+  getDocs,
+  query,
+  orderBy as firestoreOrderBy,
+} from 'firebase/firestore/lite';
 
 import db from './firebase';
 
@@ -40,7 +45,6 @@ const fetchData = async (collectionName, orderBy) => {
   const queryArgs = [dataRef];
 
   if (orderBy) queryArgs.push(firestoreOrderBy(orderBy[0], orderBy[1]));
-
   const q = query(...queryArgs);
   const querySnapshot = await getDocs(q);
   const dataDB = querySnapshot.docs.map((doc) => ({
@@ -58,7 +62,7 @@ onMounted(async () => {
   if (educationData && educationData.length > 0)
     education.value = educationData;
 
-  const experienceData = await fetchData('experience');
+  const experienceData = await fetchData('experience', ['id', 'desc']);
   if (experienceData && experienceData.length > 0)
     experience.value = experienceData;
 });

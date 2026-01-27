@@ -80,7 +80,7 @@ header {
 .role {
   color: var(--muted);
   margin-top: 4px;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .info {
@@ -88,7 +88,7 @@ header {
   gap: 12px;
   flex-wrap: wrap;
   margin-top: 6px;
-  font-size: 13px;
+  font-size: 14px;
   color: var(--muted);
   a {
     color: inherit;
