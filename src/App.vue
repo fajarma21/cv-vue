@@ -8,9 +8,12 @@
     />
     <Experience :list="experience" />
     <Education :list="education" />
+    <div class="printDate" v-if="versionDate">
+      generated on {{ dayjs(versionDate).format('DD/MM/YYYY HH:mm:ss WIB') }}
+    </div>
   </div>
   <div class="no-print btnContainer" v-if="allAvailable">
-    <PrintBtn />
+    <PrintBtn v-on:print="handleVersionDate" />
   </div>
   <div class="loader no-print" v-else>
     <v-icon name="pr-spinner" animation="spin" scale="1.5" />
@@ -19,6 +22,7 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
+import dayjs from 'dayjs';
 import {
   collection,
   getDocs,
@@ -37,6 +41,7 @@ import PrintBtn from './components/PrintBtn.vue';
 const profile = ref(null);
 const education = ref(null);
 const experience = ref(null);
+const versionDate = ref(null);
 
 const allAvailable = profile && education && experience;
 
@@ -66,6 +71,10 @@ onMounted(async () => {
   if (experienceData && experienceData.length > 0)
     experience.value = experienceData;
 });
+
+const handleVersionDate = () => {
+  versionDate.value = new Date();
+};
 </script>
 
 <style lang="scss" scoped>
@@ -110,5 +119,13 @@ onMounted(async () => {
   width: 100%;
   text-align: center;
   padding: 32px;
+}
+
+.printDate {
+  font-size: 12px;
+  width: 100%;
+  text-align: right;
+  color: var(--muted);
+  opacity: 0.5;
 }
 </style>

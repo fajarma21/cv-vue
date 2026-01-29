@@ -5,8 +5,13 @@
 </template>
 
 <script setup>
-const handleDownload = (e) => {
+const { onPrint } = defineProps(['onPrint']);
+
+const handleDownload = async (e) => {
   e.preventDefault();
+
+  if (onPrint) await onPrint();
+
   window.print();
   return false;
 };
