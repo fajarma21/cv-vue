@@ -3,6 +3,7 @@ import { OhVueIcon, addIcons } from 'oh-vue-icons';
 import {
   CoGlobeAlt,
   CoGmail,
+  CoLinkedin,
   CoLocationPin,
   CoPrint,
   PrSpinner,
@@ -11,7 +12,7 @@ import {
 import './style.css';
 import App from './App.vue';
 
-addIcons(CoGlobeAlt, CoGmail, CoLocationPin, CoPrint, PrSpinner);
+addIcons(CoGlobeAlt, CoGmail, CoLocationPin, CoPrint, PrSpinner, CoLinkedin);
 
 const app = createApp(App);
 app.component('v-icon', OhVueIcon);

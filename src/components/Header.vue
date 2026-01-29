@@ -4,12 +4,16 @@
       <img
         :src="profile.photo"
         :alt="profile.name"
-        width="92px"
-        height="92px"
+        width="104px"
+        height="104px"
       />
     </div>
     <div class="title">
-      <h1 class="name">{{ profile.name }}</h1>
+      <div class="name">
+        <h1>
+          {{ profile.name }}
+        </h1>
+      </div>
       <div class="role">{{ profile.role }}</div>
       <div class="info">
         <div class="infoCol">
@@ -20,6 +24,12 @@
           <v-icon name="co-globe-alt" scale="0.85" />
           <a :href="`https://${profile.url}`" target="_blank">{{
             profile.url
+          }}</a>
+        </div>
+        <div class="infoCol">
+          <v-icon name="co-linkedin" scale="0.85" />
+          <a :href="`https://${profile.linkedinUrl}`" target="_blank">{{
+            profile.linkedinUrl
           }}</a>
         </div>
         <div class="infoCol">
@@ -39,6 +49,7 @@ const { profile } = defineProps(['profile']);
 
 <style lang="scss" scoped>
 header {
+  position: relative;
   display: flex;
   flex-direction: row;
   gap: 18px;
@@ -50,11 +61,16 @@ header {
   }
 }
 
+.linkedin {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
 .photo {
-  width: 96px;
-  height: 96px;
+  width: 108px;
+  height: 108px;
   border-radius: 12px;
-  flex: 0 0 96px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -73,19 +89,27 @@ header {
   flex: 1;
 }
 .name {
-  font-size: 22px;
-  margin: 0;
-  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  h1 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 800;
+  }
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
 }
 .role {
   color: var(--muted);
-  margin-top: 4px;
   font-size: 14px;
 }
 
 .info {
   display: flex;
-  gap: 12px;
+  gap: 4px 12px;
   flex-wrap: wrap;
   margin-top: 6px;
   font-size: 14px;

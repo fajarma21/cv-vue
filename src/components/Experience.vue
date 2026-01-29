@@ -1,6 +1,6 @@
 <template>
   <Section title="Experience">
-    <div class="job" v-for="exp in list" :key="exp.autoId">
+    <div class="job" v-for="(exp, index) in list" :key="exp.autoId">
       <div class="head">
         <h4>
           {{ exp.title }} —
@@ -13,7 +13,7 @@
           {{ convertTime(exp.start) }} — {{ convertTime(exp.end) }}
         </div>
       </div>
-      <ul>
+      <ul v-if="index < 3">
         <li v-for="job in exp.jobDesc" :key="job">{{ job }}</li>
         <li>
           <span>Stacks: </span><em>{{ exp.jobDescStacks }}</em
